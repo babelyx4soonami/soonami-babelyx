@@ -1,0 +1,52 @@
+{
+  "name": "pex-user-uniapp",
+  "version": "1.0.0",
+  "description": "User Client",
+  "main": "main.js",
+  "author": "",
+  "repository": {
+    "type": "git",
+    "url": "https://git.faronear.org/pex/pex-user-uniapp"
+  },
+  "config": {
+    "hbxCli": "/Applications/HBuilderX.app/Contents/MacOS/cli",
+    "versionPath": "root"
+  },
+  "scripts": {
+    "boot": "echo '=== Enter [y] to install dependencies, or [anything else] to quit ==='; read -p '>>> ' YES; if [ \"$YES\" != 'y' ]; then exit 0; fi; npx shx rm -fr node_modules package-lock.json; npm i; npx shx ln -f pages.json pages4loader.json5; ",
+    "create": "APPKEY=$(jq -r .appkey fenv.json); VERSIONCODE=`node versionCodeNow.js`; echo === Creating WEB v$VERSIONCODE ===; echo; echo $VERSIONCODE > $(eval echo $npm_package_config_versionPath)/versionCode-web-$APPKEY.json; $npm_package_config_hbxCli publish --platform h5 --project $(basename $(pwd))",
+    "deploy": "echo '=== Deploy \n [w] WEB to cloudflare, [wg] WEB to github \n [anything else] to quit'; read -p '>>> ' TARGET; if [ \"$TARGET\" = 'w' ]; then npm --silent run deploy-web-cloudflare; elif [ \"$TARGET\" = 'wg' ]; then npm --silent run deploy-web-github; elif [ \"$TARGET\" = 'a' ]; then npm --silent run deploy-apk; elif [ \"$TARGET\" = 'ag' ]; then npm --silent run deploy-aab-gplay; elif [ \"$TARGET\" = 'i' ]; then npm --silent run deploy-ipa; fi",
+    "deploy-web": "echo '=== Deploy web to \n [c] Cloudflare \n [g] Github \n [anything else] to quit'; read -p '>>> ' TARGET; if [ \"$TARGET\" = 'c' ]; then npm --silent run deploy-web-cloudflare; elif [ \"$TARGET\" = 'g' ]; then npm --silent run deploy-web-github; fi",
+    "deploy-web-cloudflare": "APPKEY=$(jq -r .appkey fenv.json); VERSIONCODE=$(cat $(eval echo $npm_package_config_versionPath)/versionCode-web-$APPKEY.json); echo === Deploying Web [$APPKEY-$VERSIONCODE] to Cloudflare ===; echo; wrangler pages deploy unpackage/dist/build/web --project-name=$(jq -r .cfpWebapp fenv.json) --commit-dirty=true",
+    "deploy-web-github": "APPKEY=$(jq -r .appkey fenv.json); VERSIONCODE=$(cat $(eval echo $npm_package_config_versionPath)/versionCode-web-$APPKEY.json); echo === Deploying Web [$APPKEY-$VERSIONCODE] to Github ===; echo; node ./node_modules/wo-base-deployer/deploy.js --fromPath ./unpackage/dist/build/web",
+    "pub": "npm --silent run publish",
+    "publish": "echo '=== Publish web to \n [c] Cloudflare \n [g] Github \n [anything else] to quit'; read -p '>>> ' TARGET; if [ \"$TARGET\" = 'c' ]; then npm --silent run publish-web-cloudflare; elif [ \"$TARGET\" = 'g' ]; then npm --silent run publish-web-github; fi",
+    "publish-web-cloudflare": "npm --silent run create-web && npm --silent run deploy-web-cloudflare",
+    "publish-web-github": "npm --silent run create-web && npm --silent run deploy-web-github",
+    "to-reinstall-package": "echo === Enter a [package name] to reinstall, [leave blank] to quit ===; read -p '>>> ' PACK; if [ \"$PACK\" ]; then npx shx rm -fr \"node_modules/$PACK\"; npm i -f \"$PACK\"; fi; ",
+    "to-versionCoding": "node -e \"require('./versionCodeNow.js'); require('node-schedule').scheduleJob('0 * * * *', ()=>{ delete require.cache[require.resolve('./versionCodeNow.js')]; require('./versionCodeNow.js') })\""
+  },
+  "dependencies": {
+    "assign-deep": "^1.0.1",
+    "compass-mixins": "^0.12.12",
+    "recorder-core": "^1.2.23070100",
+    "tic-crypto": "git+https://git.faronear.org/npm/tic-crypto",
+    "wo-core-coco": "git+https://git.faronear.org/npm/wo-core-coco",
+    "wo-core-i18n": "git+https://git.faronear.org/npm/wo-core-i18n",
+    "wo-core-toolkit": "git+https://git.faronear.org/npm/wo-core-toolkit",
+    "wo-user-part-uniapp": "git+https://git.faronear.org/npm/wo-user-part-uniapp",
+    "wo-user-style-scss": "git+https://git.faronear.org/npm/wo-user-style-scss",
+    "wo-user-toolkit-uniapp": "git+https://git.faronear.org/npm/wo-user-toolkit-uniapp",
+    "wo-user-websocket-uniapp": "git+https://git.faronear.org/npm/wo-user-websocket-uniapp"
+  },
+  "devDependencies": {
+    "cross-env": "^7.0.2",
+    "filemanager-webpack-plugin": "^8.0.0",
+    "json5-loader": "^4.0.1",
+    "node-schedule": "^2.1.1",
+    "pm2": "^5.3.0",
+    "wo-base-deployer": "git+https://git.faronear.org/npm/wo-base-deployer",
+    "wo-base-webserver": "git+https://git.faronear.org/npm/wo-base-webserver",
+    "wrangler": "^3.11.0"
+  }
+}

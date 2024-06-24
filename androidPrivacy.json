@@ -1,0 +1,56 @@
+{
+  "version": "1",
+  "prompt": "template",
+  "title": "Service Agreement and Privacy Policy",
+  "titleLocales": {
+    "en": "Service Agreement and Privacy Policy",
+    "zh-Hans": "服务协议和隐私政策",
+    "zh-Hant": "服務協議和隱私政策"
+  },
+  "message": "Please carefully read and fully understand the terms of <a href=\"https://lib.babelyx.com/doc/privacy.md\">Service Agreement and Privacy Policy</a>, and then click one of the below buttons to accept or reject the terms and services.",
+  "messageLocales": {
+    "en": "Please carefully read and fully understand the terms of <a href=\"https://lib.babelyx.com/doc/privacy.md\">Service Agreement and Privacy Policy</a>, and then click one of the below buttons to accept or reject the terms and services.",
+    "zh-Hans": "　　请您审慎阅读、充分理解<a href=\"https://lib.babely.cc/doc/privacy.md\">《服务协议和隐私政策》</a>各条款，然后点击以下按钮之一以接受或拒绝这些条款和服务。",
+    "zh-Hant": "　　請您審慎閱讀、充分理解<a href=\"https://lib.babely.cc/doc/privacy.md\">《服務協議和隱私政策》</a>各條款，然後點擊以下按鈕之壹以接受或拒絕這些條款和服務。"
+  },
+  "buttonAccept": "Agree and Accept",
+  "buttonAcceptLocales": {
+    "en": "Agree and Accept",
+    "zh-Hans": "同意并接受",
+    "zh-Hant": "同意並接受"
+  },
+  "buttonRefuse": "Disagree and Reject",
+  "buttonRefuseLocales": {
+    "en": "Disagree and Reject",
+    "zh-Hans": "不同意并拒绝",
+    "zh-Hant": "不同意並拒絕"
+  },
+  "hrefLoader": "system|default",
+  "backToExit": "false",
+  "second": {
+    "title": "Exit the App",
+    "titleLocales": {
+      "en": "Exit the App",
+      "zh-Hans": "退出应用",
+      "zh-Hant": "退出應用"
+    },
+    "message": "Because you rejected <a href=\"https://lib.babelyx.com/doc/privacy.md\">Service Agreement and Privacy Policy</a>, the app is going exit, please click one of the below buttons to change or confirm your choice.",
+    "messageLocales": {
+      "en": "Because you rejected <a href=\"https://lib.babelyx.com/doc/privacy.md\">Service Agreement and Privacy Policy</a>, the app is going exit, please click one of the below buttons to change or confirm your choice.",
+      "zh-Hans": "　　尊敬的用户，由于您拒绝了<a href=\"https:///lib.babely.cc/doc/privacy.md\">《服务协议和隐私政策》</a>，现在即将退出应用，请点击以下按钮之一以修改或确认您的意向。",
+      "zh-Hant": "　　尊敬的用戶，由于您拒絕了<a href=\"https:///lib.babely.cc/doc/privacy.md\">《服務協議和隱私政策》</a>，現在即將退出應用，請點擊以下按鈕之壹以修改或確認您的意向。"
+    },
+    "buttonAccept": "Accept and Continue",
+    "buttonAcceptLocales": {
+      "en": "Accept and Continue",
+      "zh-Hans": "接受条款并继续应用",
+      "zh-Hant": "接受條款並繼續應用"
+    },
+    "buttonRefuse": "Exit the App",
+    "buttonRefuseLocales": {
+      "en": "Exit the App",
+      "zh-Hans": "退出应用",
+      "zh-Hant": "退出應用"
+    }
+  }
+}

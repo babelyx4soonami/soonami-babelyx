@@ -1,0 +1,138 @@
+{
+  "easycom": {
+    // https://uniapp.dcloud.io/collocation/pages?id=easycom
+    "autoscan": "true",
+    "custom": {
+      // "^u-(.*)": "uview-ui/components/u-$1/u-$1.vue",
+      "^uc([A-Z].*)": "wo-user-part-uniapp/uc$1/uc$1.vue",
+      "^part-(.*)": "@/parts/part-$1.vue"
+    }
+  },
+
+  "globalStyle": {
+    "navigationBarBackgroundColor": "#303133", // // 小程序无法识别 transparent，只能识别 hexColor。在华为荣耀7上，transparent导致无色导航条，无法分辨白色的导航文字。
+    "navigationBarTextStyle": "white",
+    //"navigationBarTitleText": "", // 设为空，在 web 没问题，在 app 里导致标题不显示
+    "rpxCalcMaxDeviceWidth": 960, // rpx 计算所支持的最大设备宽度，单位 px，默认值为 960
+    "rpxCalcBaseDeviceWidth": 375, // rpx 计算使用的基准设备宽度，设备实际宽度超出 rpx 计算所支持的最大设备宽度时将按基准宽度计算，单位 px，默认值为 375
+    "rpxCalcIncludeWidth": 750 // rpx 计算特殊处理的值，始终按实际的设备宽度计算，单位 rpx，默认值为 750
+  },
+
+  // #ifdef WEB
+  // topWindow 有些坑。似乎只在 App.vue 里被创建一次，以后所有页面都不会再调用。如果在 topWindow 组件里使用 setBarTitles，并不能随着每个页面切换而更新。因此把 setBarTitles 放在 footer 或 fullwindow 里更安全。
+  /*
+  "topWindow": {
+    "path": "parts/part-header/part-header.vue",
+    "style": {
+      "height": "80px"
+    },
+    "matchMedia": {
+      "minWidth": 0
+    }
+  },
+*/
+  // #endif
+  
+  "appLogo": "/static/logo-babely.png",
+  "appLandPage": "menu-creation",
+
+  "tabBar": {
+    "color": "#c0c0c0", // or #2c2c2c for white background.
+    "selectedColor": "#ffffff",
+    "backgroundColor": "#303133", // h5 recognizes transparent, app not.
+    "fontSize": "12px",
+    "iconfontSrc": "/static/uni-icons/uniicons.ttf", // 对 h5, app 有效，对小程序无效
+    "midButton": {
+      "iconPath": "/static/logo-babely.png",
+      "width": "80px",
+      "height": "58px", // 58 高出tabbar, 48 平齐
+      "iconWidth": "56px", // 40 高出tabbar, 30 平齐, 46 占掉文字
+      //"backgroundImage": "",
+      "iconType": "fire",
+      "iconTypeOn": "fire-filled",
+      //"text": "Create",
+      "i18nText": {
+        "zhCN": "创造",
+        "enUS": "Create"
+      },
+      "midPage": "mid-babely"
+    },
+    "list": [
+      {
+        "pagePath": "pages/menu-creation",
+        "iconfont": {
+          "text": "\ue66e",
+          "color": "#c0c0c0",
+          "selectedText": "\ue67a",
+          "selectedColor": "#ffffff",
+          "fontSize": "26px"
+        },
+        // "iconPath": "/static/menu-creation.c0c0c0.png",
+        // "selectedIconPath": "/static/menu-creation.COLOR.png",
+        "text": "Creations",
+        "i18nText": {
+          "zhCN": "探索", // 探索，世界，作品
+          "enUS": "Creations" // Discover, Explore, Creations
+        }
+      },
+      {
+        "pagePath": "pages/menu-creator",
+        "iconfont": {
+          "text": "\ue6a7",
+          "color": "#c0c0c0",
+          "selectedText": "\ue6cb",
+          "selectedColor": "#ffffff",
+          "fontSize": "26px"
+        },
+        // "iconPath": "/static/menu-creator.c0c0c0.png",
+        // "selectedIconPath": "/static/menu-creator.COLOR.png",
+        "text": "Creators",
+        "i18nText": {
+          "zhCN": "遇见", // 社区，关注，访问，遇见
+          "enUS": "Creators" // Follow
+        }
+      },
+      {
+        "pagePath": "pages/menu-aipp",
+        "iconfont": {
+          "text": "\ue697",
+          "color": "#c0c0c0",
+          "selectedText": "\ue694",
+          "selectedColor": "#ffffff",
+          "fontSize": "26px"
+        },
+        "text": "AIGC",
+        "i18nText": {
+          "zhCN": "AIGC",
+          "enUS": "AIGC"
+        }
+      },
+      {
+        "pagePath": "pages/menu-uzone",
+        "iconfont": {
+          "text": "\ue699",
+          "color": "#c0c0c0",
+          "selectedText": "\ue69d",
+          "selectedColor": "#ffffff",
+          "fontSize": "26px"
+        },
+        // "iconPath": "/static/menu-uzone.c0c0c0.png",
+        // "selectedIconPath": "/static/menu-uzone.COLOR.png",
+        "text": "My",
+        "i18nText": {
+          "zhCN": "我的",
+          "enUS": "My"
+        }
+      }
+    ]
+  },
+
+  "pages": [
+    {
+      "path": "pages/home-portal",
+      "style": {
+        "navigationStyle": "custom" // weixin需要特设custom，不然无法点击顶部元素
+      }
+    }
+  ]
+}

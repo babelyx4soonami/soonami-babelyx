@@ -1,0 +1,36 @@
+/**  
+* 覆盖掉 uview 定义的语义命名色彩。
+*/
+// *** 红色 $u-type-error
+$u-type-error: wo_color(red-default);
+$u-type-error-dark: wo_color(red-dark);
+$u-type-error-disabled: wo_color(red-matt);
+$u-type-error-light: wo_color(red-light);
+// *** 绿色 $u-type-success
+$u-type-success: wo_color(green-default);
+$u-type-success-dark: wo_color(green-dark);
+$u-type-success-disabled: wo_color(green-matt);
+$u-type-success-light: wo_color(green-light);
+// *** 蓝色 $u-type-primary
+$u-type-primary: wo_color(blue-default);
+$u-type-primary-dark: wo_color(blue-dark);
+$u-type-primary-disabled: wo_color(blue-matt);
+$u-type-primary-light: wo_color(blue-light);
+// *** 黄色 $u-type-warning
+$u-type-warning: wo_color(yellow-default);
+$u-type-warning-dark: wo_color(yellow-dark);
+$u-type-warning-disabled: wo_color(yellow-matt);
+$u-type-warning-light: wo_color(yellow-light);
+// *** 灰色 $u-type-info
+$u-type-info: wo_color(grey-9);
+$u-type-info-dark: wo_color(grey-8);
+$u-type-info-disabled: wo_color(grey-c);
+$u-type-info-light: wo_color(grey-f);
+// *** 墨黑，主要用于白底上的文字。来自 uview 的文字色。
+$u-content-color: wo_color(grey-6);
+$u-main-color: wo_color(grey-3);
+$u-tips-color: wo_color(grey-9);
+$u-light-color: wo_color(grey-c);
+// *** 苍白，主要用于边框，或黑底上的白色文字。
+$u-border-color: wo_color(grey-e); // uview 边框色
+$u-bg-color: wo_color(grey-f); // uview 背景色

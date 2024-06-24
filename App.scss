@@ -1,0 +1,110 @@
+/* 导入 uview 的主题 */
+// @import 'uview-ui/theme.scss';
+// @import 'wo-user-style-scss/device.scss';
+@import 'wo-user-style-scss/triangle.scss';
+
+/**
+ * 基于 uview 和 uniapp 的通用主题
+ */
+
+// ** 字体
+$font-size-xlarge: 18px;
+$font-size-large: 16px;
+$font-size: 14px; // 正文
+$font-size-small: 13px;
+$font-size-tiny: 12px;
+
+/**
+ * 直观命名的色彩，取代语义命名。
+ */
+$colorMap: (
+  // * * 应用的主色和辅色（语义化命名)
+  // 红色主色
+  main: #fc592b,
+  main-light: #fc592b,
+  main-matt: #fab6b6,
+  main-dark: #fc592b,
+  minor: #ff9900,
+  action: #a0cfff,
+  bg: #f3f4f6,
+  border: #e5e5e5,
+  fg: #fff,
+  // *** 蓝色，来自 uview 的 $u-type-primary
+  blue: blue,
+  blue-default: #2979ff,
+  blue-dark: #2b85e4,
+  blue-matt: #a0cfff,
+  blue-light: #ecf5ff,
+  // *** 绿色，来自 uview 的 $u-type-success
+  green: green,
+  green-default: #19be6b,
+  green-dark: #18b566,
+  green-matt: #71d5a1,
+  green-light: #dbf1e1,
+  // *** 黄色，来自 uview 的 $u-type-warning
+  yellow: yellow,
+  yellow-default: #fea600,
+  yellow-dark: #f29100,
+  yellow-matt: #fcbd71,
+  yellow-light: #ffcd1e,
+  // *** 红色，来自 uview 的 type-error
+  red: red,
+  red-default: #fa3534,
+  red-dark: #dd6161,
+  red-matt: #fab6b6,
+  red-light: #fef0f0,
+  // *** 灰色，来自 uview 的 $u-type-info
+  // *** 苍白，主要用于边框，或黑底上的白色文字。
+  // *** 墨黑，主要用于白底上的文字。来自 uview 的文字色。
+  black: #000,
+  grey: grey,
+  grey-dark: darkgrey,
+  grey-light: lightgrey,
+  grey-3: #303133,
+  grey-6: #606266,
+  grey-8: #82848a,
+  grey-9: #909399,
+  grey-a: #aaa,
+  grey-b: #bbb,
+  grey-c: #c8c9cc,
+  grey-d: #dcdfe6,
+  grey-e: #e4e7ed,
+  grey-f: #f3f4f6,
+  white: #fff,
+  transparent: transparent,
+  // *** 半透明
+  mask-black-15: rgba(black, 0.15),
+  mask-black-30: rgba(black, 0.3),
+  mask-black-50: rgba(black, 0.5)
+);
+
+@function wo_color($key) {
+  @return map-get($colorMap, $key);
+}
+
+/**
+* 程序化定义色彩直接变量 --***，以及 color, background-color, border-color 的原子类
+*/
+// 导入 vue-cli 中报错，提示改成 ""+$colorName 才通过。
+@each $colorName, $colorValue in $colorMap {
+  .wo-bg-color-#{""+$colorName} {
+    background-color: $colorValue; // #{map-get($colorMap, $colorName)};
+  }
+  .wo-text-color-#{""+$colorName} {
+    color: $colorValue; // #{map-get($colorMap, $colorName)};
+  }
+  .wo-border-color-#{""+$colorName} {
+    border-color: $colorValue; // #{map-get($colorMap, $colorName)};
+  }
+  .wo-hover-bgcolor-#{""+$colorName}:hover {
+    background-color: $colorValue
+  }
+  .wo-hover-textcolor-#{""+$colorName}:hover {
+    color: $colorValue
+  }
+  // css直接变量
+  // https://developer.mozilla.org/zh-CN/docs/Web/CSS/Using_CSS_custom_properties
+  :root {
+    #{"--"+$colorName}: $colorValue;
+  }
+}
