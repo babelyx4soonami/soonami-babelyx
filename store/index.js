@@ -80,6 +80,7 @@ export default new Vuex.Store({
       // 可变状态
       windowWidthNow: windowWidth,
       minWidth500: deviceType === 'pc' ? Math.min(windowWidth, 500) + 'px' : 'unset',
+      minWidth600: deviceType === 'pc' ? Math.min(windowWidth, 600) + 'px' : 'unset',
       maxWidth600: deviceType === 'pc' ? Math.min(windowWidth, 600) + 'px' : 'unset',
       maxWidth750: deviceType === 'pc' ? Math.min(windowWidth, 750) + 'px' : 'unset',
       // 以下变量用于绑定到 part-window 组件的 uni-popup 元素上。

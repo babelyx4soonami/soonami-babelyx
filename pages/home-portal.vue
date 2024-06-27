@@ -30,6 +30,11 @@ export default {
 
       <part-mint></part-mint>
 
+      <part-show-loading v-if="wo.ss.Ident.autologgingState === 'WAITING'">
+        <!-- <part-dev>luk: 1. 等待自动登录结束； 2. 避免在电脑屏幕上 header 和 footer 碰到一起</part-dev> -->
+      </part-show-loading>
+      <part-creation-all></part-creation-all>
+
       <view :style="{bottom:wo.envar.inPc?'20px':'16px'}" class="wo-flex end align-center wo-text-color-grey-c" id="_底栏" style="position:fixed;right:0;left:0;">
         <part-lang-table class="wo-bg-color-grey-c" style="position:unset; color:var(--grey-6); border:0; margin:0 10px;"></part-lang-table>
       </view>

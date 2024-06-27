@@ -199,7 +199,7 @@ export default {
           box-shadow: 2px 2px 15px 0px rgba(0,0,0,0.7);
         "
             v-if="!hideAvatar"
-          >{{ creation.portrait ? '' : creation.nickname.substr(0, 2) }}</view>
+          >{{ creation.portrait ? '' : (creation.nickname||'').substr(0, 2) }}</view>
         </view>
         <view class="wo-flex row between align-center wo-bg-color-grey-f" id="_统计信息条" style="padding: 10px 10px" v-if="!hideInfobar">
           <view

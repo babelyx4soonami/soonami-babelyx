@@ -133,6 +133,9 @@
       "style": {
         "navigationStyle": "custom" // weixin需要特设custom，不然无法点击顶部元素
       }
+    },
+    {
+      "path": "pages/show-creation"
     }
   ]
 }
