@@ -19,7 +19,9 @@ export default {
 <template>
   <part-window :style="{ backgroundImage: wo.tt.make_bgurl(wo.envar.portalImage) }" style="background: var(--grey-f) no-repeat center / cover;border-top:0">
     <view class="window-page-900" style="height: 100%; display: flex; flex-flow: column nowrap; justify-content: flex-start">
-      <view style="flex:none;display: flex; flex-flow: column nowrap; justify-content: between;">
+      <view
+        style="flex:none;display: flex; flex-flow: column nowrap; justify-content: between; position:fixed; top:0; left:0;right:0; background:var(--grey-f); z-index:999;"
+      >
         <view class="wo-flex column nowrap">
           <view
             :style="{ backgroundImage: `url(${wo.pagesJson.appLogo})`, backgroundColor:wo.envar.clientInfo.appkey==='AKBABELY'?'white':'transparent', marginTop:`${wo.envar.statusBarHeight+20}px` }"
@@ -28,7 +30,7 @@ export default {
         </view>
       </view>
 
-      <part-mint></part-mint>
+      <part-mint style="margin-top:100px"></part-mint>
 
       <part-show-loading v-if="wo.ss.Ident.autologgingState === 'WAITING'">
         <!-- <part-dev>luk: 1. 等待自动登录结束； 2. 避免在电脑屏幕上 header 和 footer 碰到一起</part-dev> -->

@@ -46,6 +46,7 @@ export default new Vuex.Store({
       //// 只在前端使用的变量。如果需要，也可从后台发来更新，在 App.vue 里覆盖。
 
       // 前端固有状态，不能从后台改变。可考虑放到 main.js: wo.consts 里
+      callnames: { enUS: 'Babelyx', zhCN: '巴贝历' },
       clientInfo: { // todo: maybe better named as clientNow
         appkey: fenv.appkey, // 因为要用到 fenv 所以放在 store.state 里，否则放在 main.js 里作为non-reactive更好
         appVersionCode, // 来自 uni.getSystemInfoSync() 又辗转来自 manifest.json
@@ -344,8 +345,8 @@ export default new Vuex.Store({
             chainlens: {
               linkkey: 'chainlens',
               i18nName: { zhCN: '永存链', enUS: 'Pexchain' },
-              i18nPageTitle: { zhCN: '永存证区块链', enUS: 'The PEX Chain' },
-              infoTitle: { zhCN: '查看永存链上的资产', enUS: 'Check assets in the PEX blockchain' },
+              i18nPageTitle: { zhCN: '永存证区块链', enUS: 'The BLX Chain' },
+              infoTitle: { zhCN: '查看永存链上的资产', enUS: 'Check assets in the BLX blockchain' },
               iconType: 'settings-filled',
               linkUrl: envar.tucGateway,
             }

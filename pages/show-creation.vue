@@ -168,8 +168,8 @@ export default {
         return
       }
 
-      commentStory = wo.tt.filter_story(commentStory)
-      if (!commentStory?.length) {
+      this.commentStory = wo.tt.filter_story(this.commentStory)
+      if (!this.commentStory?.length) {
         this.commentStory = [{ text: '' }]
         wo.tt.showToast({ type: wo.color.RED, title: wo.ll({ zhCN: '评论是空的。请先写点儿什么！', enUS: 'Comment is empty. Please write something!' }) })
         return
@@ -671,8 +671,10 @@ export default {
 
 <template>
   <part-window>
-    <view :class="{ 'window-page-900': wo.envar.inPc, 'window-page-full': !wo.envar.inPc }">
-      <view style="flex:none;display: flex; flex-flow: column nowrap; justify-content: between;">
+    <view :class="{ 'window-page-900': wo.envar.inPc, 'window-page-full': !wo.envar.inPc }" style="margin-top:80px;">
+      <view
+        style="flex:none;display: flex; flex-flow: column nowrap; justify-content: between;position:fixed;top:0;left:0;right:0;background:var(--grey-f); z-index:999;"
+      >
         <view class="wo-flex column nowrap">
           <view
             :style="{ backgroundImage: `url(${wo.pagesJson.appLogo})`, backgroundColor:wo.envar.clientInfo.appkey==='AKBABELY'?'white':'transparent', marginTop:`${wo.envar.statusBarHeight+20}px` }"
@@ -931,16 +933,16 @@ export default {
             </uni-list-item>-->
 
             <uni-list-item :border="false" :customStyle="{ padding: '10px' }" clickable style="cursor: unset">
-              <view slot="header" style="flex: none; padding-right: 10px">{{ wo.ll({ zhCN: '永存证', enUS: 'PEX' }) }}</view>
+              <view slot="header" style="flex: none; padding-right: 10px">{{ wo.ll({ zhCN: '永存证', enUS: 'BLX' }) }}</view>
               <view class="text-ellipsis wo-flex end" slot="footer" style="flex:auto;">
-                <text
-                  @click="wo.tt.copy_to_clipboard(wo.ss.Creation.creationNow.pextokenCid)"
+                <view
+                  @click="wo.tt.open_url({url: wo.envar.ipfsGateway + wo.ss.Creation.creationNow.pextokenCid})"
                   class="text-ellipsis"
                   style="flex:0 1 auto;text-align:right;cursor:pointer; color: var(--blue-default)"
                 >
                   <uni-icons color="unset" custom-prefix="icont-basic" type="icont-basic-copy-line"></uni-icons>
-                  {{ wo.ss.Creation.creationNow.pextokenCid }}
-                </text>
+                  <text>{{ wo.ss.Creation.creationNow.pextokenCid }}</text>
+                </view>
                 <view
                   @click="$refs.poptoSharePex.open()"
                   id="_分享按钮Pex"
@@ -953,7 +955,7 @@ export default {
             <uni-popup :type="wo.envar.inPc ? 'center' : 'bottom'" background-color="white" ref="poptoSharePex">
               <!-- <part-dev>非常奇怪，这个 uni-popup 放在分享按钮内部，导致弹出窗里的链接越过popup边界，不会自动换行</part-dev> -->
               <part-share-pop
-                :shareTitle="`${wo.ll(wo.envar.callnames)} - ${wo.ll({ zhCN: '加密永存证', enUS: 'Encrypted PEX' })}`"
+                :shareTitle="`${wo.ll(wo.envar.callnames)} - ${wo.ll({ zhCN: '永存证', enUS: 'BLX' })}`"
                 :shareUrl="wo.envar.ipfsGateway + wo.ss.Creation.creationNow.pextokenCid"
                 @closeMe="$refs.poptoSharePex.close()"
               ></part-share-pop>
@@ -962,14 +964,14 @@ export default {
             <uni-list-item :border="false" :customStyle="{ padding: '10px' }" clickable style="cursor: unset" v-if="wo.ss.Creation.creationNow.mintTxHash">
               <view slot="header" style="flex: none; padding-right: 10px">{{ wo.ll({ zhCN: '产权币', enUS: 'NFT' }) }}</view>
               <view class="text-ellipsis wo-flex end" slot="body" style="flex:auto;">
-                <text
-                  @click="wo.tt.copy_to_clipboard(wo.ss.Creation.creationNow.mintTxHash)"
+                <view
+                  @click="wo.tt.open_url({url:wo.envar.tucGateway + wo.ss.Creation.creationNow.mintTxHash})"
                   class="text-ellipsis"
-                  style="flex:0 1 auto;text-align:right;cursor:pointer; color:var(--blue-default)"
+                  style="flex:0 1 auto;text-align:right;cursor:pointer; color: var(--blue-default)"
                 >
                   <uni-icons color="unset" custom-prefix="icont-basic" type="icont-basic-copy-line"></uni-icons>
-                  {{ wo.ss.Creation.creationNow.mintTxHash }}
-                </text>
+                  <text>{{ wo.ss.Creation.creationNow.mintTxHash }}</text>
+                </view>
                 <view
                   @click="$refs.poptoShareNft.open()"
                   id="_分享按钮Nft"
@@ -982,7 +984,7 @@ export default {
             <uni-popup :type="wo.envar.inPc ? 'center' : 'bottom'" background-color="white" ref="poptoShareNft">
               <!-- <part-dev>非常奇怪，这个 uni-popup 放在分享按钮内部，导致弹出窗里的链接越过popup边界，不会自动换行</part-dev> -->
               <part-share-pop
-                :shareTitle="`${wo.ll(wo.envar.callnames)} - ${wo.ll({ zhCN: '加密产权币', enUS: 'Encrypted NFT' })}`"
+                :shareTitle="`${wo.ll(wo.envar.callnames)} - ${wo.ll({ zhCN: '产权币', enUS: 'NFT' })}`"
                 :shareUrl="wo.envar.tucGateway+'/tx/'+wo.ss.Creation.creationNow.mintTxHash"
                 @closeMe="$refs.poptoShareNft.close()"
               ></part-share-pop>

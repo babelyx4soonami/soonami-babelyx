@@ -1,13 +1,9 @@
 {
-  "name": "pex-user-uniapp",
+  "name": "soonami-babelyx",
   "version": "1.0.0",
   "description": "User Client",
   "main": "main.js",
   "author": "",
-  "repository": {
-    "type": "git",
-    "url": "https://git.faronear.org/pex/pex-user-uniapp"
-  },
   "config": {
     "hbxCli": "/Applications/HBuilderX.app/Contents/MacOS/cli",
     "versionPath": "root"
@@ -21,8 +17,8 @@
     "deploy-web-github": "APPKEY=$(jq -r .appkey fenv.json); VERSIONCODE=$(cat $(eval echo $npm_package_config_versionPath)/versionCode-web-$APPKEY.json); echo === Deploying Web [$APPKEY-$VERSIONCODE] to Github ===; echo; node ./node_modules/wo-base-deployer/deploy.js --fromPath ./unpackage/dist/build/web",
     "pub": "npm --silent run publish",
     "publish": "echo '=== Publish web to \n [c] Cloudflare \n [g] Github \n [anything else] to quit'; read -p '>>> ' TARGET; if [ \"$TARGET\" = 'c' ]; then npm --silent run publish-web-cloudflare; elif [ \"$TARGET\" = 'g' ]; then npm --silent run publish-web-github; fi",
-    "publish-web-cloudflare": "npm --silent run create-web && npm --silent run deploy-web-cloudflare",
-    "publish-web-github": "npm --silent run create-web && npm --silent run deploy-web-github",
+    "publish-web-cloudflare": "npm --silent run create && npm --silent run deploy-web-cloudflare",
+    "publish-web-github": "npm --silent run create && npm --silent run deploy-web-github",
     "to-reinstall-package": "echo === Enter a [package name] to reinstall, [leave blank] to quit ===; read -p '>>> ' PACK; if [ \"$PACK\" ]; then npx shx rm -fr \"node_modules/$PACK\"; npm i -f \"$PACK\"; fi; ",
     "to-versionCoding": "node -e \"require('./versionCodeNow.js'); require('node-schedule').scheduleJob('0 * * * *', ()=>{ delete require.cache[require.resolve('./versionCodeNow.js')]; require('./versionCodeNow.js') })\""
   },

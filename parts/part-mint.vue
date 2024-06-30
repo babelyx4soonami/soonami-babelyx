@@ -15,7 +15,7 @@ export default {
         SELF: { zhCN: '自主管理', enUS: 'Self', intro: { zhCN: '您自行加密封印并响应日常访问请求。\n（民宿模式，您本人掌管全部钥匙）', enUS: 'You manage all keys to manage your creation' } },
         JOINT: { zhCN: '联合管理', enUS: 'Joint', intro: { zhCN: '您和平台联合管理。（中介模式，您和中介各自持有钥匙）', enUS: 'You and the agent manage the creation together' } },
       },
-      authTypeNow: 'AGENT',
+      authTypeNow: 'SELF',
       secword: '',
 
       //pexdataRaw: [{ text: '' }], // 搜了下也没做什么处理，但每次回到本页面，pexdataRaw 都恰好是被重置了的，挺实用，但是很奇怪。似乎是，通过navigationBar的返回按钮返回的页面，就会自动重置，其他页面上就不会这样自动重置。
@@ -626,7 +626,7 @@ export default {
           <text style="text-align:center; font-size:20px; font-weight:bold">{{ wo.ll({ zhCN: '选择加密方式', enUS: 'Choose Encryption Mode' })}}</text>
           <part-dev style="text-align:center; padding-top:5px; font-size:14px; color:#999">{{ wo.ll({zhCN:'选择加密方式',enUS:'Choose an encryption mode'})}}</part-dev>
         </view>
-        <uni-segmented-control
+        <!-- <uni-segmented-control
           :current="Object.keys(authorizationList).indexOf(authTypeNow)"
           :values="Object.values(authorizationList).map(wo.ll)"
           @clickItem="({currentIndex}) => {
@@ -636,7 +636,7 @@ export default {
           padding="0 10px"
           style="margin: 10px 10px 0"
           styleType="button"
-        ></uni-segmented-control>
+        ></uni-segmented-control>-->
         <view style="padding:10px">
           <text>{{ wo.ll(authorizationList[authTypeNow].intro) }}</text>
         </view>
