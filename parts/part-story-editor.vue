@@ -129,7 +129,7 @@ export default {
     },
 
     addSection ({ type = 'text' }) {
-      if (!wo.tt.check_online()) {
+      if (!wo.envar.mintByChoice && !wo.tt.check_online()) {
         return
       }
       const self = this

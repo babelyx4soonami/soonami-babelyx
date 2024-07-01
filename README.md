@@ -6,34 +6,36 @@ This present repo is a new project for the Soonami Hackathon. It makes use of co
 
 ### Preview
 
-For your preview: <https://soonami-babelyx.pages.dev/>
+For your preview: [https://soonami-babelyx.pages.dev/](https://soonami-babelyx.pages.dev/)
 
-### Technical requirements
+### Technology
 
 This demo is developed using following techniques:
 
 - Frontend Library: Vue [https://vuejs.org](https://vuejs.org)
 - Frontend Framework: Uni-App [https://en.uniapp.dcloud.io](https://en.uniapp.dcloud.io)
-- Backend (in another private repo): Nodejs + Express + TypeORM.
+- Backend: Nodejs + Express + TypeORM.
 
 ### Installation
 
 It is cross-platform but we suggest MacOS.
 
 - Download this repo, enter the project root, then install dependencies:
+
   ```
   ## Install nodejs if you haven't yet.
   git clone https://github.com/babelyx4soonami/soonami-babelyx
   cd soonami-babelyx
   npm i
   ```
-- Download & Install HBuilderX from <https://www.dcloud.io/hbuilderx.html> . This is an IDE for Uni-App development.
+
+- Download & Install HBuilderX from [https://www.dcloud.io/hbuilderx.html](https://www.dcloud.io/hbuilderx.html) . This is an IDE for Uni-App development.
 - Launch HBuilderX, load this repo's folder as an project, click on the "Preview" button at the top-left corner, the webapp will be compiled and displayed within the IDE.
   ![alt text](hbuilderx.png)
 
-### Structure
+### Repository Structure
 
-- **main.js**: the entry point of the app to prepare environment
+- **main.js**: entry point of the app to prepare environment
 - **pages/home-portal.vue**: home page where users submit contents and mint to BLX tokens.
 - **pages/show-creation.vue**: show a selected creation in details.
-- **BLX.sol**: smart contract for Safe NFT
+- **[BLX.sol](./BLX.sol)**: the smart contract that defines Safe NFT

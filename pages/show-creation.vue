@@ -848,24 +848,6 @@ export default {
             align-items: center;
           "
           >
-            <!-- <view id="_作者头像" style="
-              position: absolute;
-              width: 60px;
-              height: 60px;
-              background: #f3f4f6 no-repeat scroll center / cover border-box;
-              opacity:0.5;
-              color: black;
-              border-radius: 100%;
-              bottom: 30px;
-              right: 30px;
-              text-align: center;
-              line-height: 60px;
-              font-size: 20px;
-              overflow: hidden;
-              word-break: keep-all;
-            " :style="{ backgroundImage: wo.tt.make_bgurl(wo.ss.Creation.creationNow.portrait) }">
-            {{ wo.ss.Creation.creationNow.portrait ? '' : wo.ss.Creation.creationNow.nickname.substr(0,2) }}
-            </view>-->
             <button
               @click="() => { if (wo.tt.check_online()) $refs.dialogPayToView.open() }"
               class="wo-bg-color-main wo-text-color-grey-f"
@@ -894,7 +876,7 @@ export default {
           </view>
         </view>
 
-        <view id="_作品周边" style="flex: none; box-sizing: border-box" v-if="wo.ss.Creation.creationNow.creatorUsid">
+        <view id="_作品周边" style="flex: none; box-sizing: border-box" v-if="wo.ss.Creation.creationNow.pextokenCid">
           <uni-list
             :border="true"
             class="wo-bg-color-white list-header-color wo-select-forbidden"
@@ -940,7 +922,7 @@ export default {
                   class="text-ellipsis"
                   style="flex:0 1 auto;text-align:right;cursor:pointer; color: var(--blue-default)"
                 >
-                  <uni-icons color="unset" custom-prefix="icont-basic" type="icont-basic-copy-line"></uni-icons>
+                  <uni-icons color="unset" custom-prefix="icont-basic" type="icont-basic-hyperlink"></uni-icons>
                   <text>{{ wo.ss.Creation.creationNow.pextokenCid }}</text>
                 </view>
                 <view
@@ -969,7 +951,7 @@ export default {
                   class="text-ellipsis"
                   style="flex:0 1 auto;text-align:right;cursor:pointer; color: var(--blue-default)"
                 >
-                  <uni-icons color="unset" custom-prefix="icont-basic" type="icont-basic-copy-line"></uni-icons>
+                  <uni-icons color="unset" custom-prefix="icont-basic" type="icont-basic-hyperlink"></uni-icons>
                   <text>{{ wo.ss.Creation.creationNow.mintTxHash }}</text>
                 </view>
                 <view
