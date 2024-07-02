@@ -12,7 +12,7 @@ export default {
 
       authorizationList: {
         AGENT: { zhCN: '全权委托', enUS: 'Agent', intro: { zhCN: '您全权委托平台加密封印您的作品。\n（公寓模式，你委托物业管理全部钥匙）', enUS: 'You authorize the agent to manage your creation' } },
-        SELF: { zhCN: '自主管理', enUS: 'Self', intro: { zhCN: '您自行加密封印并响应日常访问请求。\n（民宿模式，您本人掌管全部钥匙）', enUS: 'You manage all keys to manage your creation' } },
+        SELF: { zhCN: '自主管理', enUS: 'Self', intro: { zhCN: '您自行加密封印并响应日常访问请求。\n（民宿模式，您本人掌管全部钥匙）', enUS: 'You take full responsibility to manage this creation. Never leak or forget this mnemonic!' } },
         JOINT: { zhCN: '联合管理', enUS: 'Joint', intro: { zhCN: '您和平台联合管理。（中介模式，您和中介各自持有钥匙）', enUS: 'You and the agent manage the creation together' } },
       },
       authTypeNow: 'SELF',
@@ -98,7 +98,8 @@ export default {
 
     async validate_creation () {
       wo.ss.Creation.pexdataRaw = wo.tt.filter_story(wo.ss.Creation.pexdataRaw)
-      if (!wo.ss.Creation.pexdataRaw?.length) {      // 过滤掉空的段落
+      if (!wo.ss.Creation.pexdataRaw?.length) {     // 过滤掉空的段落
+        wo.ss.Creation.pexdataRaw = [{ text: '' }]
         this.showErrorEmptyStory = true
         this.storyFeedback = { zhCN: '内容不能为空！', enUS: 'Content cannot be empty!' }
         this.focusList[1] = true
@@ -195,16 +196,23 @@ export default {
         return
       }
 
+      this.payToMintFeedback = ''
+      wo.tt.showLoading({ title: wo.ll({ zhCN: '铸造中...', enUS: 'Minting...' }), mask: wo.envar.waitMask })
+      this.minting = true
+
       let { _state, pexdataCid } = await wo.tt.callBase({
         apiWho: 'Creation',
         apiTodo: 'story_to_cid',
         apiWhat: { pexdataRaw: wo.ss.Creation.pexdataRaw },
       })
       if (!wo.bok(_state)) {
+        this.minting = false
+        wo.tt.hideLoading()
+
         this.payToMintFeedback = { zhCN: '该作品没有成功地存入IPFS。请稍后再试一次，或请向客服报告。', enUS: 'Failed to store this creation in IPFS. Please try again later, or report to the customer service.' }
       } else {
         const creatorKeypair = ticc.secword_to_keypair({ secword: this.secword, coin: wo.envar.chainCoin })
-        let { _state, creation } = await wo.tt.callBase({
+        let { _state, creation, rejectReason } = await wo.tt.callBase({
           apiWho: 'Creation',
           apiTodo: 'mint_creation_by_choice',
           apiWhat: {
@@ -241,6 +249,10 @@ export default {
             creatorPubkey: creatorKeypair.pubkey,
           }
         })
+
+        this.minting = false
+        wo.tt.hideLoading()
+
         if (wo.bok(_state)) {
           this.$refs.dialogEncrypt.close()
           this.$refs.dialogPact.close()
@@ -370,7 +382,7 @@ export default {
           </text>
         </view>
         <part-story-editor
-          :allowVideo="wo.envar.allowVideoInCreation"
+          :allowVideo="true || wo.envar.allowVideoInCreation"
           :baseType="wo.envar.baseTypeFile"
           :feedback="storyFeedback"
           :isFocused="focusList[1]"
@@ -407,6 +419,7 @@ export default {
       </uni-collapse>-->
 
       <button
+        :disabled="storyEmpty"
         :style="{opacity:storyEmpty?0.2:1}"
         @click="validate_creation"
         class="wo-bg-color-main wo-text-color-white"
@@ -623,7 +636,7 @@ export default {
         style="max-height:75vh;margin:0 auto;background-color:var(--grey-f)"
       >
         <view class="wo-flex column" style="padding:20px 20px">
-          <text style="text-align:center; font-size:20px; font-weight:bold">{{ wo.ll({ zhCN: '选择加密方式', enUS: 'Choose Encryption Mode' })}}</text>
+          <text style="text-align:center; font-size:20px; font-weight:bold">{{ wo.ll({ zhCN: '加密', enUS: 'Mnemonic' })}}</text>
           <part-dev style="text-align:center; padding-top:5px; font-size:14px; color:#999">{{ wo.ll({zhCN:'选择加密方式',enUS:'Choose an encryption mode'})}}</part-dev>
         </view>
         <!-- <uni-segmented-control

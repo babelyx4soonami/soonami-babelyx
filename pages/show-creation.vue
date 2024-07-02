@@ -947,7 +947,7 @@ export default {
               <view slot="header" style="flex: none; padding-right: 10px">{{ wo.ll({ zhCN: '产权币', enUS: 'NFT' }) }}</view>
               <view class="text-ellipsis wo-flex end" slot="body" style="flex:auto;">
                 <view
-                  @click="wo.tt.open_url({url:wo.envar.tucGateway + wo.ss.Creation.creationNow.mintTxHash})"
+                  @click="wo.tt.open_url({url:wo.envar.tucGateway + '/tx/'+ wo.ss.Creation.creationNow.mintTxHash})"
                   class="text-ellipsis"
                   style="flex:0 1 auto;text-align:right;cursor:pointer; color: var(--blue-default)"
                 >

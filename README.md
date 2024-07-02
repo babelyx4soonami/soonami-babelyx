@@ -4,16 +4,20 @@ What wonders can arise when UGC embraces Web3? **Babelyx** , the Babel Tower of 
 
 This present repo is a new project for the Soonami Hackathon. It makes use of components developed previously in other projects to accelerate development. In the Hackathon we mainly implemented 2 new pages and corresponding backend service to illustrate the basic ideas of Babelyx.
 
-### Preview
+**Preview Demo**: [https://soonami-babelyx.pages.dev/](https://soonami-babelyx.pages.dev/)
 
-For your preview: [https://soonami-babelyx.pages.dev/](https://soonami-babelyx.pages.dev/)
+**Github Repo**: [https://github.com/babelyx4soonami/soonami-babelyx](https://github.com/babelyx4soonami/soonami-babelyx)
+
+**Pitching Video**: [https://youtu.be/a7KYxQLmyaw](https://youtu.be/a7KYxQLmyaw)
+
+**How to Video**: [https://youtu.be/EO-ZCcjeSvA](%E2%80%B8https://youtu.be/EO-ZCcjeSvA)
 
 ### Technology
 
 This demo is developed using following techniques:
 
-- Frontend Library: Vue [https://vuejs.org](https://vuejs.org)
-- Frontend Framework: Uni-App [https://en.uniapp.dcloud.io](https://en.uniapp.dcloud.io)
+- Frontend Library: [Vue](https://vuejs.org)
+- Frontend Framework: [Uni-App](https://en.uniapp.dcloud.io)
 - Backend: Nodejs + Express + TypeORM.
 
 ### Installation
@@ -29,7 +33,7 @@ It is cross-platform but we suggest MacOS.
   npm i
   ```
 
-- Download & Install HBuilderX from [https://www.dcloud.io/hbuilderx.html](https://www.dcloud.io/hbuilderx.html) . This is an IDE for Uni-App development.
+- Download & Install [HBuilderX](https://www.dcloud.io/hbuilderx.html). This is the official IDE for Uni-App development.
 - Launch HBuilderX, load this repo's folder as an project, click on the "Preview" button at the top-left corner, the webapp will be compiled and displayed within the IDE.
   ![alt text](hbuilderx.png)
 

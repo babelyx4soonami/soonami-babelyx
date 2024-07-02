@@ -4,8 +4,8 @@
     // 方案2: https://ask.dcloud.net.cn/question/149387 https://uniapp.dcloud.net.cn/tutorial/i18n.html 据说无效。
     "appid" : "__UNI__5600063",
     "description" : "",
-    "versionName" : "2407.0107",
-    "versionCode" : 24070107,
+    "versionName" : "2407.0205",
+    "versionCode" : 24070205,
     "transformPx" : false,
     /* https://uniapp.dcloud.net.cn/collocation/manifest.html#networktimeout */
     "networkTimeout" : {
