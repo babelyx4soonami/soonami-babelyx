@@ -442,7 +442,7 @@ export default {
         <part-close-button @closeMe="() => { $refs.dialogPact.close() }"></part-close-button>
 
         <view class="wo-flex column" style="padding:20px 20px 0">
-          <text style="text-align:center; padding:0; font-size:20px; font-weight:bold">{{ wo.ll({zhCN:'定义您的合约',enUS:'Define Your Contract'})}}</text>
+          <text style="text-align:center; padding:0; font-size:20px; font-weight:bold">{{ wo.ll({zhCN:'定义角色合约',enUS:'Define Role Pacts'})}}</text>
           <part-dev
             style="text-align:center; padding-top:5px; font-size:14px;; color:#999"
           >{{ wo.ll({zhCN:'定义合约，为您带来长久收益',enUS:'Define contracts to earn passive incomes forever'})}}</part-dev>

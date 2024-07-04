@@ -51,7 +51,7 @@ export default {
       }
       const { _state, cid, size, ...rest } = await wo.tt.pickupFile({ baseType: wo.envar.baseTypeFile, mediaType: { KNOWBASE: wo.ss.aiConfig.openaiFileSearchExt, TEMPLIB: wo.ss.aiConfig.openaiCodeInterpreterExt }[usage] })
       if (wo.bok(_state)) {
-        if (!size || this.aippNow.fileList.some(file => file.cid === cid && file.usage === usage)) {
+        if (this.aippNow.fileList.some(file => file.cid === cid && file.usage === usage)) {
           wo.tt.showToast({ type: wo.color.YELLOW, title: { zhCN: '发现重复的文件。', enUS: 'Duplicate files detected.' } })
         } else {
           this.aippNow.fileList.push({ usage, cid, size, ...rest })

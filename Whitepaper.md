@@ -29,7 +29,7 @@ BLX features:
 
    Since its rise in 2021, NFT technology has garnered significant attention, transforming digital content into unique assets and forging direct, intimate connections between creators, fans, sponsors, and investors. (See [NFTs: Empowering Creators in the Digital World](https://learn.metamask.io/lessons/nfts-and-creators))
 
-   However, NFTs are merely "owner certificate of unsafe content". While the certificates themselves are unreplicable and tamper-proof through blockchain technology, the actual content behind NFT is still as vulnerable as traditional internet (Web2) content, lacking privacy protection and being accessible, copyable and even tamperable by anyone. This vulnerability limits the application scenarios of NFT technology, which is primarily only thriving in the digital art market.
+   However, NFTs are merely "safe token of unsafe content". While the certificates themselves are unreplicable and tamper-proof through blockchain technology, the actual content behind NFT is still as vulnerable as traditional internet (Web2) content, lacking privacy protection and being accessible, copyable and even tamperable by anyone. This vulnerability limits the application scenarios of NFT technology, which is primarily only thriving in the digital art market.
 
    To resolve these pain points, we upgrades NFT with safe content, to become Safe NFT, by encrypting the actual content in the following steps:
 

@@ -19,13 +19,12 @@
     "publish": "echo '=== Publish web to \n [c] Cloudflare \n [g] Github \n [anything else] to quit'; read -p '>>> ' TARGET; if [ \"$TARGET\" = 'c' ]; then npm --silent run publish-web-cloudflare; elif [ \"$TARGET\" = 'g' ]; then npm --silent run publish-web-github; fi",
     "publish-web-cloudflare": "npm --silent run create && npm --silent run deploy-web-cloudflare",
     "publish-web-github": "npm --silent run create && npm --silent run deploy-web-github",
-    "to-reinstall-package": "echo === Enter a [package name] to reinstall, [leave blank] to quit ===; read -p '>>> ' PACK; if [ \"$PACK\" ]; then npx shx rm -fr \"node_modules/$PACK\"; npm i -f \"$PACK\"; fi; ",
+    "to-reinstall-package": "echo === Enter a [package name] to reinstall, [leave blank] to quit ===; read -p '>>> ' PACK; if [ \"$PACK\" ]; then npx shx rm -fr \"node_modules/${PACK##*/}\"; npm i -f \"$PACK\"; fi; ",
     "to-versionCoding": "node -e \"require('./versionCodeNow.js'); require('node-schedule').scheduleJob('0 * * * *', ()=>{ delete require.cache[require.resolve('./versionCodeNow.js')]; require('./versionCodeNow.js') })\""
   },
   "dependencies": {
     "assign-deep": "^1.0.1",
     "compass-mixins": "^0.12.12",
-    "recorder-core": "^1.2.23070100",
     "tic-crypto": "git+https://git.faronear.org/npm/tic-crypto",
     "wo-core-coco": "git+https://git.faronear.org/npm/wo-core-coco",
     "wo-core-i18n": "git+https://git.faronear.org/npm/wo-core-i18n",
@@ -41,8 +40,8 @@
     "json5-loader": "^4.0.1",
     "node-schedule": "^2.1.1",
     "pm2": "^5.3.0",
+    "shelljs": "^0.8.5",
     "wo-base-deployer": "git+https://git.faronear.org/npm/wo-base-deployer",
-    "wo-base-webserver": "git+https://git.faronear.org/npm/wo-base-webserver",
     "wrangler": "^3.11.0"
   }
 }

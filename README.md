@@ -10,7 +10,7 @@ This present repo is a new project for the Soonami Hackathon. It makes use of co
 
 **Pitching Video**: [https://youtu.be/a7KYxQLmyaw](https://youtu.be/a7KYxQLmyaw)
 
-**How to Video**: [https://youtu.be/EO-ZCcjeSvA](%E2%80%B8https://youtu.be/EO-ZCcjeSvA)
+**How to Video**: [https://youtu.be/EO-ZCcjeSvA](https://youtu.be/EO-ZCcjeSvA)
 
 **Whitepaper**: [Whitepaper.md](./Whitepaper.md)
 

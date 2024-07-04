@@ -235,7 +235,7 @@ export default {
       }
       const { _state, cid, size, ...rest } = await wo.tt.pickupFile({ baseType: wo.envar.baseTypeFile, mediaType: { KNOWBASE: wo.ss.aiConfig.openaiFileSearchExt, TEMPLIB: wo.ss.aiConfig.openaiCodeInterpreterExt }[usage] })
       if (wo.bok(_state)) {
-        if (!size || wo.ss.AI.promptFileList.some(file => file.cid === cid && file.usage === usage)) {
+        if (wo.ss.AI.promptFileList.some(file => file.cid === cid && file.usage === usage)) {
           wo.tt.showToast({ type: wo.color.YELLOW, title: { zhCN: '发现重复的文件。', enUS: 'Duplicate files detected.' } })
         } else {
           wo.ss.AI.promptFileList.push({ usage, cid, size, ...rest })
@@ -1049,7 +1049,7 @@ export default {
               <template v-if="wo.envar.AI.aicodeNow.startsWith('asst_')">
                 <template v-if="wo.ss.inWeb">
                   <!-- <part-dev>知识库/模版库是assistant level的概念，在具体的thread level上，不要叫这些名字，也不要叫“添加/add"，而是以用户操作的角度命名为"attach to search/edit"</part-dev> -->
-                  <uni-tooltip :content="wo.envar.inPc?wo.ll({zhCN:'添加文件进行检索',enUS:'Attach a file to search'}):''">
+                  <uni-tooltip :content="wo.envar.inPc?wo.ll({zhCN:'添加知识文件以供检索',enUS:'Attach a knowledge file for search'}):''">
                     <view
                       :class="{'wo-hover-bgcolor-blue-matt':wo.envar.inPc}"
                       @click="pickup_file_to_ipfs('KNOWBASE')"
@@ -1057,10 +1057,10 @@ export default {
                       style="margin-left: 0; white-space: nowrap; flex: none; padding: 5px 8px; margin-right: 10px;"
                     >
                       <uni-icons color="unset" custom-prefix="icont-basic" size="18" style="margin-right:2px" type="icont-basic-file-search-line"></uni-icons>
-                      {{wo.ll({zhCN:'检索',enUS:'Search'})}}
+                      {{wo.ll({zhCN:'知识',enUS:'Knowledge'})}}
                     </view>
                   </uni-tooltip>
-                  <uni-tooltip :content="wo.envar.inPc?wo.ll({zhCN:'添加文件进行编辑',enUS:'Attach a file to edit'}):''">
+                  <uni-tooltip :content="wo.envar.inPc?wo.ll({zhCN:'添加模版文件以供编辑',enUS:'Attach a template file for edit'}):''">
                     <view
                       :class="{'wo-hover-bgcolor-blue-matt':wo.envar.inPc}"
                       @click="pickup_file_to_ipfs('TEMPLIB')"
@@ -1068,7 +1068,7 @@ export default {
                       style="margin-left: 0; white-space: nowrap; flex: none; padding: 5px 8px; margin-right: 10px;"
                     >
                       <uni-icons color="unset" custom-prefix="icont-basic" size="18" style="margin-right:2px" type="icont-basic-file-edit-line"></uni-icons>
-                      {{wo.ll({zhCN:'编辑',enUS:'Edit'})}}
+                      {{wo.ll({zhCN:'模版',enUS:'Template'})}}
                     </view>
                   </uni-tooltip>
                 </template>

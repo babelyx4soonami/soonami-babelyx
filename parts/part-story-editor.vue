@@ -139,20 +139,20 @@ export default {
           if (replace) self.story.length = 0
           self.story.push({ text: '' })
         } else if (type === 'image') {
-          let { _state, ...fileInfo } = await wo.tt.pickupFile({ baseType: self.baseType, mediaType: 'image' })
+          let { _state, _msg, ...fileInfo } = await wo.tt.pickupFile({ baseType: self.baseType, mediaType: 'image' })
           if (wo.bok(_state)) {
             if (replace) self.story.length = 0
             self.story.push({ image: wo.tt.choose_url(fileInfo) })
           } else {
-            self.myFeedback = { zhCN: '图片上传失败', enUS: 'Image upload failed' }
+            self.myFeedback = _msg || { zhCN: '图片上传失败', enUS: 'Image upload failed' }
           }
         } else if (type === 'video') {
-          let { _state, ...fileInfo } = await wo.tt.pickupFile({ baseType: self.baseType, mediaType: 'video' })
+          let { _state, _msg, ...fileInfo } = await wo.tt.pickupFile({ baseType: self.baseType, mediaType: 'video' })
           if (wo.bok(_state)) {
             if (replace) self.story.length = 0
             self.story.push({ video: wo.tt.choose_url(fileInfo) })
           } else {
-            self.myFeedback = { zhCN: '视频上传失败', enUS: 'Video upload failed' }
+            self.myFeedback = _msg || { zhCN: '视频上传失败', enUS: 'Video upload failed' }
           }
         } else {
           self.myFeedback = { zhCN: '无效的内容类型', enUS: 'Invalid section type' }

@@ -42,3 +42,5 @@ fs.writeFileSync(manifestPath, Manifest, { flag: 'w' })
 //fs.writeFileSync(path.join(__dirname, 'versionCode-created.json'), versionCode, { flag: 'w' })
 //console.log(new Date(), 'versionCode =', versionCode)
 console.log(versionCode)
+
+module.exports = versionCode
